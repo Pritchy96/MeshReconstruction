@@ -1,5 +1,6 @@
 #pragma once
 #include "DataStructs.h"
+#include <glm/ext/vector_float3.hpp>
 
 namespace MeshReconstruction
 {
@@ -10,15 +11,15 @@ namespace MeshReconstruction
 
 		// If it exists, vertex on edge i is stored at position i.
 		// For edge numbering and location see numberings.png.
-		std::array<Vec3, 12> edgeVertIndices;
+		std::array<glm::vec3, 12> edgeVertIndices;
 	};
 
 	class Cube
 	{
-		Vec3 pos[8];
+		glm::vec3 pos[8];
 		double sdf[8];
 
-		Vec3 LerpVertex(double isoLevel, int i1, int i2) const;
+		glm::vec3 LerpVertex(double isoLevel, int i1, int i2) const;
 		int SignConfig(double isoLevel) const;
 
 	public:

@@ -1,4 +1,5 @@
 #include "Triangulation.h"
+#include <glm/geometric.hpp>
 
 namespace
 {
@@ -286,9 +287,9 @@ void MeshReconstruction::Triangulate(
 		mesh.vertices.push_back(v1);
 		mesh.vertices.push_back(v2);
 
-		auto normal0 = grad(v0).Normalized();
-		auto normal1 = grad(v1).Normalized();
-		auto normal2 = grad(v2).Normalized();
+		auto normal0 = glm::normalize(grad(v0));
+		auto normal1 = glm::normalize(grad(v1));
+		auto normal2 = glm::normalize(grad(v2));
 
 		mesh.vertexNormals.push_back(normal0);
 		mesh.vertexNormals.push_back(normal1);
@@ -296,6 +297,6 @@ void MeshReconstruction::Triangulate(
 
 		auto last = static_cast<int>(mesh.vertices.size() - 1);
 
-		mesh.triangles.push_back({ last - 2, last - 1, last });
+		mesh.indexes.push_back({ last - 2, last - 1, last });
 	}
 }

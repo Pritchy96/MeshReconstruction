@@ -65,7 +65,7 @@ namespace
 	};
 }
 
-Vec3 Cube::LerpVertex(double isoLevel, int i1, int i2) const
+glm::vec3 Cube::LerpVertex(double isoLevel, int i1, int i2) const
 {
 	auto const Eps = 1e-5;
 	auto const v1 = sdf[i1];
@@ -77,8 +77,8 @@ Vec3 Cube::LerpVertex(double isoLevel, int i1, int i2) const
 	if (abs(isoLevel - v2) < Eps) return p2;
 	if (abs(v1 - v2) < Eps) return p1;
 
-	auto mu = (isoLevel - v1) / (v2 - v1);
-	return p1 + (p2 - p1)*mu;
+	float mu = (isoLevel - v1) / (v2 - v1);
+	return p1 + (p2 - p1) * mu;
 }
 
 Cube::Cube(Rect3 const& space, Fun3s const& sdf)

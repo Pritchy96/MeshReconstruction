@@ -21,7 +21,7 @@ namespace MeshReconstruction
 	Mesh MarchCube(
 		Fun3s const& sdf,
 		Rect3 const& domain,
-		Vec3 const& cubeSize,
+		glm::vec3 const& cubeSize,
 		double isoLevel = 0,
 		Fun3v sdfGrad = nullptr);
 }
